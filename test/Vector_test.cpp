@@ -6,32 +6,26 @@
 
 using namespace std;
 
-MTEST(testVector)
-{
-	Vector<int> V;
-	EXPECT_EQ(V.size(), 0);
-	EXPECT_EQ(V.empty(), true);
-	V.insert(12);
-	EXPECT_EQ(V.size(), 1);
-	EXPECT_EQ(V.empty(), false);
-	V.insert(15);
-	EXPECT_EQ(V.size(), 2);
-	V.insert(11);
-	V.insert(11);
-	V.insert(11);
-	EXPECT_EQ(V.size(), 5);
-	V.deduplicate();
-	EXPECT_EQ(V.size(), 3);
-	V.remove(2);
-	EXPECT_EQ(V.size(), 2);
+MTEST(testVector) {
+  Vector<int> V;
+  EXPECT_EQ(V.size(), 0);
+  EXPECT_EQ(V.empty(), true);
+  V.insert(12);
+  EXPECT_EQ(V.size(), 1);
+  EXPECT_EQ(V.empty(), false);
+  V.insert(15);
+  EXPECT_EQ(V.size(), 2);
+  V.insert(11);
+  V.insert(11);
+  V.insert(11);
+  EXPECT_EQ(V.size(), 5);
+  V.deduplicate();
+  EXPECT_EQ(V.size(), 3);
+  V.remove(2);
+  EXPECT_EQ(V.size(), 2);
 }
 
-
-
-int main(int argc, char* argv[])
-{
-    return MRUN_ALL_TESTS();
-}
+int main(int argc, char *argv[]) { return MRUN_ALL_TESTS(); }
 #if 0
 /******************************************************************************************
  * 测试：无序向量的（顺序）查找
@@ -99,7 +93,12 @@ void TestOrderedInsertion ( Vector<T> & V, int n ) {
 /******************************************************************************************
  * 测试向量
  ******************************************************************************************/
-#define PRINT(x)  { print(x); crc(x); checkOrder(x); }
+#define PRINT(x)                                                               \
+  {                                                                            \
+    print(x);                                                                  \
+    crc(x);                                                                    \
+    checkOrder(x);                                                             \
+  }
 template <typename T> //元素类型
 void   testVector ( int testSize ) {
    printf ( "\n  ==== Test %2d. Generate a random vector\n", testID++ );

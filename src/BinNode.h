@@ -70,6 +70,6 @@ template <typename T> struct BinNode {
      : (x)->parent->parent->lChild)
 
 #define FromParentTo(x)                                                 \
-    IsRoot(x) ? root_ : (IsLChild(x) ? (x).parent->lChild : (x).parent->rChild)
+    IsRoot(x) ? this->root_ : (IsLChild(x) ? (x).parent->lChild : (x).parent->rChild)
 
 #include "BinNode_implementation.h"

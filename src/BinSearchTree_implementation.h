@@ -62,31 +62,31 @@ BinNodePosi(T) BST<T>::insert(const T& e)
 }
 
 /******************************************************************************************
-* 按照“3 + 4”结极联接3个节点及其四棵子树，迒回重组乀后癿尿部子树根节点位置（即b）
-* 子树根节点不上局节点乀间癿双向联接，均项由上局调用者完成
-* 可用亍AVL和RedBlack癿尿部平衡调整
+* 按照“3 + 4”结构联接3个节点及其四棵子树，返回重组之后的局部子树根节点位置（即b）
+* 子树根节点与上层节点之间癿双向联接，均须由上层调用者完成
+* 可用于AVL和RedBlack局部平衡调整
 ******************************************************************************************/
 template<typename T> BinNodePosi(T) BST<T>::connect34(
     BinNodePosi(T) a, BinNodePosi(T) b, BinNodePosi(T) c,
     BinNodePosi(T) T0, BinNodePosi(T) T1, BinNodePosi(T) T2, BinNodePosi(T) T3
 ) {
     a->lChild = T0; if (T0) T0->parent = a;
-    a->rChild = T1; if (T1) T1->parent = a; updateHeight(a);
+    a->rChild = T1; if (T1) T1->parent = a; this->updateHeight(a);
 
     c->lChild = T2; if (T2) T2->parent = c;
-    c->rChild = T3; if (T3) T3->parent = c; updateHeight(c);
+    c->rChild = T3; if (T3) T3->parent = c; this->updateHeight(c);
 
     b->lChild = a; a->parent = b;
-    b->rChild = c; c->parent = b; updateHeight(b);
-    return b;
+    b->rChild = c; c->parent = b; this->updateHeight(b);
+    return b;       //返回子树的根节点
 }
 
 /******************************************************************************************
-* BST节点旋转发换统一算法（3节点 + 4子树），迒回调整乀后尿部子树根节点癿位置
-* 注意：尽管子树根会正确指向上局节点（如枅存在），但反向癿联接项由上局函数完成
+* BST节点旋转变换统一算法（3节点 + 4子树），返回调整之后局部子树根节点的位置
+* 注意：尽管子树根会正确指向上层节点（如果存在），但反向的联接须由上层函数完成
 ******************************************************************************************/
 template <typename T> BinNodePosi(T) BST<T>::rotateAt(BinNodePosi(T) v) { //v为非空癿孙辈节点
-	BinNodePosi(T) p = v->parent; BinNodePosi(T) g = p->parent; //规v、p和g相对位置分四种情冴
+	BinNodePosi(T) p = v->parent; BinNodePosi(T) g = p->parent; //规v、p和g相对位置分四种情况
 	if (IsLChild(*p)) /* zig */
 		if (IsLChild(*v)) { /* zig-zig */
 			p->parent = g->parent; //向上联接

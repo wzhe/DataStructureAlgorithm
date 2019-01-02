@@ -1,13 +1,13 @@
 ﻿/******************************************************************************************
  * Test of BST
  ******************************************************************************************/
-#include "../src/BinSearchTree.h"
+#include "../src/SplayTree.h"
 #include "Minigtest.h"
 
 using namespace std;
 
-MTEST(testBST) {
-    BST<int> V;
+MTEST(testSplay) {
+    Splay<int> V;
     EXPECT_EQ(V.size(), 0);
     EXPECT_EQ(V.empty(), true);
   V.insert(12);

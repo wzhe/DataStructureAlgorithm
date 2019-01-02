@@ -9,10 +9,10 @@
 
 template<typename T> class AVL : public BST<T> {
 public:
-    BinNodePosi(T) insert override(const T& e);
-    bool remove override(const T& e);
+    BinNodePosi(T) insert (const T& e) override;
+    bool remove (const T& e) override;
     //BST::search()等其余接口可直接沿用
-}；
+};
 
 #define Balanced(x) (stature((x).lChild) == stature((x).rChild)) //理想平衡条件
 #define BalFac(x) (stature((x).lChild) - stature((x).rChild)) //平衡因子
@@ -28,4 +28,4 @@ public:
     ) \
     ) \
 )
-#include "AVL_implementation.h"
+#include "AVLTree_implementation.h"

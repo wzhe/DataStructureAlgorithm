@@ -74,4 +74,4 @@ public:
   template <typename VST> void traverse(VST &); //使用函数对象遍历，可全局修改
 };                                              // Vector
 
-#include "vector_implementation.h"
+#include "Vector_implementation.h"

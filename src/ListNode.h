@@ -1,38 +1,39 @@
 /***************************************************
  * Data Structure & Algorithm
  * wzhe ahuwang@163.com
-***************************************************/
+ ***************************************************/
 
 #pragma once
 
-#define ListNodePosi(T) ListNode<T> * //ÁĞ±í½ÚµãÎ»ÖÃ
+ //åˆ—è¡¨èŠ‚ç‚¹ä½ç½®
+#define ListNodePosi(T) ListNode<T>*
 
-//ÁĞ±í½ÚµãÄ£°åÀà(ÒÔË«ÏòÁ´±íĞÎÊ½ÊµÏÖ)
+//åˆ—è¡¨èŠ‚ç‚¹æ¨¡æ¿ç±»(ä»¥åŒå‘é“¾è¡¨å½¢å¼å®ç°)
 template <typename T> struct ListNode {
-  T data;               //Êı¾İ
-  ListNodePosi(T) pred; //Ç°Çı
-  ListNodePosi(T) succ; //ºó¼Ì
+    T data;               //æ•°æ®
+    ListNodePosi(T) pred; //å‰é©±
+    ListNodePosi(T) succ; //åç»§
 
-  //¹¹Ôìº¯Êı
-  ListNode() {} //Õë¶ÔheaderºÍtrailerµÄ¹¹Ôì
-  ListNode(T e, ListNodePosi(T) p = NULL, ListNodePosi(T) s = NULL)
-      : data(e), pred(p), succ(s) {} //Ä¬ÈÏ¹¹Ôì
+    //æ„é€ å‡½æ•°
+    ListNode() {} //é’ˆå¯¹headerå’Œtrailerçš„æ„é€ 
+    ListNode(T e, ListNodePosi(T) p = nullptr, ListNodePosi(T) s = nullptr)
+        : data(e), pred(p), succ(s) {} //é»˜è®¤æ„é€ 
 
-  //²Ù×÷½Ó¿Ú
-  ListNodePosi(T) insertAsPred(T const &e); //½ô¿¿µ±Ç°½ÚµãÖ®Ç°²åÈë
-  ListNodePosi(T) insertAsSucc(T const &e); //½ô¿¿µ±Ç°½ÚµãÖ®ºó²åÈë
+    //æ“ä½œæ¥å£
+    ListNodePosi(T) insertAsPred(T const &e); //ç´§é å½“å‰èŠ‚ç‚¹ä¹‹å‰æ’å…¥
+    ListNodePosi(T) insertAsSucc(T const &e); //ç´§é å½“å‰èŠ‚ç‚¹ä¹‹åæ’å…¥
 };
 
 template <typename T> ListNodePosi(T) ListNode<T>::insertAsPred(T const &e) {
-  ListNodePosi(T) x = new ListNode(e, pred, this); //´´½¨ĞÂ½Úµã
-  pred->succ = x;
-  pred = x;
-  return x;
+    ListNodePosi(T) x = new ListNode<T>(e, pred, this); //åˆ›å»ºæ–°èŠ‚ç‚¹
+    pred->succ = x;
+    pred = x;
+    return x;
 }
 
 template <typename T> ListNodePosi(T) ListNode<T>::insertAsSucc(T const &e) {
-  ListNodePosi(T) x = new ListNode(e, this, succ); //´´½¨ĞÂ½Úµã
-  succ->pred = x;
-  succ = x;
-  return x;
+    ListNodePosi(T) x = new ListNode<T>(e, this, succ); //åˆ›å»ºæ–°èŠ‚ç‚¹
+    succ->pred = x;
+    succ = x;
+    return x;
 }
